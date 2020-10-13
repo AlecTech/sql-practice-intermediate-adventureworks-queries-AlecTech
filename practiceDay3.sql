@@ -11,3 +11,8 @@ FROM employee INNER JOIN contact
 ON employee.ContactID = contact.ContactID
 WHERE contact.FirstName LIKE 'S%';
 
+-- 3.Q: Determine the current pay rate of the CEO of Adventure Works.
+SELECT employee.Title, employee.EmployeeID, employeepayhistory.Rate
+FROM employee INNER JOIN employeepayhistory
+ON employee.EmployeeID = employeepayhistory.EmployeeID
+WHERE employee.Title = 'Chief Executive Officer';
