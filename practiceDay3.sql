@@ -6,7 +6,7 @@ FROM employee
 WHERE  employee.VacationHours = (SELECT MAX(employee.VacationHours) FROM employee);
 -- 2. Q: Determine how many employees there are whose names start with the letter S.
 
-SELECT employee.ContactID, contact.FirstName
+SELECT COUNT(*)
 FROM employee INNER JOIN contact
 ON employee.ContactID = contact.ContactID
 WHERE contact.FirstName LIKE 'S%';
@@ -61,13 +61,6 @@ WHERE  employee.LoginID LIKE '%8') as Totals_8,
 (SELECT COUNT(employee.LoginID) 
 FROM employee
 WHERE  employee.LoginID LIKE '%9') as Totals_9;
-
-
--- maybe substr makes is shorter
-SELECT SUBSTR(employee.LoginID,1,1) as Totals, count(employee.EmployeeID)
-FROM employee
-WHERE employee.LoginID LIKE '%0'
-GROUP BY SUBSTR(employee.LoginID, 1, 1);
 
 
 
