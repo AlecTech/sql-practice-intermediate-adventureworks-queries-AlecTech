@@ -16,3 +16,11 @@ SELECT employee.Title, employee.EmployeeID, employeepayhistory.Rate
 FROM employee INNER JOIN employeepayhistory
 ON employee.EmployeeID = employeepayhistory.EmployeeID
 WHERE employee.Title = 'Chief Executive Officer';
+
+-- 4.Q: Determine how many employees are currently employed in each department.
+SELECT COUNT(*) as TotalEmp, department.DepartmentID, department.Name
+FROM employeedepartmenthistory INNER JOIN department
+ON employeedepartmenthistory.DepartmentID = department.DepartmentID
+WHERE employeedepartmenthistory.EndDate IS NULL
+GROUP BY department.DepartmentID, department.Name;
+
